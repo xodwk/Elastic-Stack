@@ -1,2 +1,2 @@
 # Elastic-Stack
-ELK 연습용!
+ELK & API 자동화 관련
