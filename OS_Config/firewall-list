@@ -1,0 +1,24 @@
+[root@root conf.d]# firewall-cmd --list-all
+public (active)
+  target: default
+  icmp-block-inversion: no
+  interfaces: ens33
+  sources:
+  services: dhcpv6-client ssh
+  ports:
+  protocols:
+  masquerade: yes
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+        rule family="ipv4" source address="192.168.88.0/24" port port="5601" protocol="tcp" accept
+        rule family="ipv4" source address="192.168.88.0/24" port port="9200" protocol="tcp" accept
+
+# Command
+# Elastic Search Port Open
+# firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address=192.168.88.0/24 port port="9200" protocol="tcp" accept'
+# Kibana Port Open
+# firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address=192.168.88.0/24 port port="5601" protocol="tcp" accept'
+# Masquerade ON
+# firewall-cmd --permanent --zone=public --add-masquerade
